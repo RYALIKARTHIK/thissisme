@@ -170,6 +170,54 @@
             z-index: -1;
             background: transparent;
         }
+/* Terms Popup */
+.terms-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    z-index: 11;
+    width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.terms-content {
+    position: relative;
+}
+
+.close-terms {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 767px){
+            .profile-pic{
+                width: 60px;
+                height: 60px;
+            }
+        }
+    
     </style>
 </head>
 <body>
@@ -188,6 +236,7 @@
     </form>
     
     <button class="invest-btn" id="investBtn" onclick="handleInvest()" disabled>Invest 1 Rupee</button> 
+<button class="invest-btn" id="termsBtn">Terms and Agreements</button>
     
     <div class="qr-popup" id="qrPopup">
         <img src="https://i.ibb.co/q3N7sJNh/invest.png" alt="PhonePe QR Code">
@@ -343,6 +392,51 @@
             },
             retina_detect: true
         });
+// Show Terms Modal
+document.getElementById("termsBtn").addEventListener("click", function() {
+    document.getElementById("termsPopup").style.display = "block";
+});
+
+// Hide Terms Modal
+function hideTerms() {
+    document.getElementById("termsPopup").style.display = "none";
+}
     </script>
+<div class="terms-popup" id="termsPopup">
+    <div class="terms-content">
+        <span class="close-terms" onclick="hideTerms()">&times;</span>
+        <h2>Terms and Agreements</h2>
+        <p>
+            <strong>Policies and Agreement</strong><br>
+<strong>1. Introduction</strong><br>
+This agreement outlines the terms and conditions for participating in the 5-Month Investment Plan. By investing, you agree to the following terms.<br><br>
+
+<strong>2. Investment Terms</strong><br>
+The investment duration is 5 months.<br>
+The user must pay ₹1 per day for 7 consecutive days (from the 1st to the 7th) of each month.<br>
+Payments must be made on time (strictly between the 1st and 7th of each month).<br><br>
+
+<strong>3. Automatic Termination Policy</strong><br>
+If the user misses even one day's payment, the bond will automatically terminate, and the user will be disqualified from receiving any returns.<br>
+Once terminated, the user cannot re-enter the same investment cycle.<br><br>
+
+<strong>4. Payout Eligibility</strong><br>
+If the user successfully completes all 5 months by making all required payments on time, they will receive 10 times the total invested amount at the end of the period.<br>
+No partial rewards will be given for incomplete participation.<br><br>
+
+<strong>5. Payment Rules</strong><br>
+Payments must be made via the designated payment method (QR code or provided payment link).<br>
+Late payments or skipped payments will result in immediate bond termination.<br><br>
+
+<strong>6. Disclaimer</strong><br>
+This plan is based on strict discipline and consistency. No refunds or exceptions will be made if a user fails to meet the payment criteria.<br>
+The platform reserves the right to modify or terminate this plan in case of unforeseen circumstances.<br><br>
+By clicking "Invest", you acknowledge and agree to the above terms and conditions.
+        </p>
+    </div>
+</div>
+<img src="https://i.ibb.co/qMW1BXFB/webpage.jpg" alt="Profile Picture" class="profile-pic">
+   
+
 </body>
 </html>
